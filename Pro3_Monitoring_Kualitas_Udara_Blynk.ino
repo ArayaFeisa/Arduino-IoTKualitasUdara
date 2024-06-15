@@ -1,16 +1,3 @@
-/*********************************************
-  Program 3 : Kualitas Udara dg Blynk
-  Input : Sensor MQ-135, DHT11
-  Output : OLED LCD, Blynk IoT
-  Chip   : NodeMCU V3
-  Koneksi MQ-135 --> A0
-  Koneksi DHT11 --> D4
-  IoT Monitoring Kualitas Udara
-  www.ardutech.com 
-*********************************************/ 
-//---GANTI SESUAI DENGAN TEMPLATE ID
- //---GANTI DEVICE NAME
- //---GANTI TOKEN BLYNK ANDA
 #define BLYNK_TEMPLATE_ID "TMPLhIL-Dum-"
 #define BLYNK_TEMPLATE_NAME "Monitoring Kualitas Udara"
 #define BLYNK_AUTH_TOKEN "7LmTyFj-mOZNvjFrnIungFtwUCzg1Fgm"
@@ -20,7 +7,6 @@
 #include <WiFiClient.h>
 #include <BlynkSimpleEsp8266.h>
 char auth[] = BLYNK_AUTH_TOKEN;
-// Sesuaikan dengan ssid dan password hotspot anda
 char ssid[] = "jogjardutech";
 char pass[] = "12345678";
 
@@ -40,8 +26,8 @@ char pass[] = "12345678";
 MQ135 mq135_sensor(PIN_MQ135);
 Adafruit_SSD1306 display(OLED_WIDTH, OLED_HEIGHT);
 DHT dht(DHTPIN, DHTTYPE);
-float temperature = 21.0; // Assume current temperature. Recommended to measure with DHT22
-float humidity = 25.0; // Assume current humidity. Recommended to measure with DHT22
+float temperature = 21.0;
+float humidity = 25.0;
 float rzero;
 float correctedRZero;
 float resistance;
@@ -54,12 +40,12 @@ void setup() {
   display.begin(SSD1306_SWITCHCAPVCC, OLED_ADDR);
   display.clearDisplay();
   delay(10);
-  // Print text on display
+
   display.clearDisplay();
   display.setTextSize(1);
   display.setTextColor(WHITE);
   display.setCursor(0,0);
-  display.print("NodeMCU V3"); // Print text
+  display.print("NodeMCU V3");
   display.display();
   display.setTextSize(1);
   display.setTextColor(WHITE);
